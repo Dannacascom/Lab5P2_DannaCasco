@@ -15,6 +15,13 @@ public class Personajes {
         this.vida = vida;
     }
 
+    public Personajes(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Personajes() {
+    }
+
     public String getNombre() {
         return nombre;
     }
