@@ -36,6 +36,13 @@ public class Main extends javax.swing.JFrame {
         modelo.addElement("Marvel");
         modelo.addElement("Capcom");
         modelo.addElement("MG");
+        name.setText("");
+        power.setText("");
+        debilidad.setValue(0);
+        fuerza.setValue(0);
+        agilidadf.setValue(0);
+        agilidadm.setValue(0);
+        vida.setValue(0);
 
     }
 
@@ -126,6 +133,11 @@ public class Main extends javax.swing.JFrame {
         addBot.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addBotMouseClicked(evt);
+            }
+        });
+        addBot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBotActionPerformed(evt);
             }
         });
 
@@ -314,6 +326,10 @@ public class Main extends javax.swing.JFrame {
     private void addBotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBotMouseClicked
 
         String s = (String) cb_universe.getSelectedItem();
+        if( name.getText().equals("")||power.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Se encuentran espacios sin llenar ");
+        }
+        
 
         if (s.equals("CD")) {
 
@@ -326,70 +342,71 @@ public class Main extends javax.swing.JFrame {
                     (Integer) agilidadm.getValue(),
                     (Integer) vida.getValue()));
 
-            DefaultMutableTreeNode n1 = new DefaultMutableTreeNode("DC");
-            for (Personajes o : dc) {
-                DefaultMutableTreeNode nom = new DefaultMutableTreeNode(dc.get(0).getNombre());
-                nom.add(nom);
-            }
-            DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) jTree1.getModel().getRoot();
-            rootNode.add(n1);
+            DefaultMutableTreeNode nodo = new DefaultMutableTreeNode("DC");
+            nodo.add(dc.get(0).getNombre());
             ((DefaultTreeModel) jTree1.getModel()).reload(rootNode);
-        }
+                    JOptionPane.showMessageDialog(this, "Agregado exitosamente");
 
-    
-
-    else if (s.equals ( 
-        "Marvel")) {
+        } else if (s.equals(
+                "Marvel")) {
             Marvel.add(new Personajes(name.getText(),
-                (String) power.getText(),
-                (String) cb_universe.getSelectedItem(),
-                (Integer) debilidad.getValue(),
-                (Integer) fuerza.getValue(),
-                (Integer) agilidadf.getValue(),
-                (Integer) agilidadm.getValue(),
-                (Integer) vida.getValue()));
+                    (String) power.getText(),
+                    (String) cb_universe.getSelectedItem(),
+                    (Integer) debilidad.getValue(),
+                    (Integer) fuerza.getValue(),
+                    (Integer) agilidadf.getValue(),
+                    (Integer) agilidadm.getValue(),
+                    (Integer) vida.getValue()));
 
-        fuerza.setValue(0);
+            fuerza.setValue(0);
 
-        DefaultMutableTreeNode n2 = new DefaultMutableTreeNode("Marvel");
+            DefaultMutableTreeNode n2 = new DefaultMutableTreeNode("Marvel");
+             JOptionPane.showMessageDialog(this, "Agregado exitosamente");
 
-    }
 
-    else if (s.equals ( 
-        "Capcom")) {
+        } else if (s.equals(
+                "Capcom")) {
             capcom.add(new Personajes(name.getText(),
-                (String) power.getText(),
-                (String) cb_universe.getSelectedItem(),
-                (Integer) debilidad.getValue(),
-                (Integer) fuerza.getValue(),
-                (Integer) agilidadf.getValue(),
-                (Integer) agilidadm.getValue(),
-                (Integer) vida.getValue()));
+                    (String) power.getText(),
+                    (String) cb_universe.getSelectedItem(),
+                    (Integer) debilidad.getValue(),
+                    (Integer) fuerza.getValue(),
+                    (Integer) agilidadf.getValue(),
+                    (Integer) agilidadm.getValue(),
+                    (Integer) vida.getValue()));
 
-        fuerza.setValue(0);
-        DefaultMutableTreeNode n3 = new DefaultMutableTreeNode("Capcom");
+            fuerza.setValue(0);
+            DefaultMutableTreeNode n3 = new DefaultMutableTreeNode("Capcom");
 
-    }
-
-    
-        else {
+        } else {
             MG.add(new Personajes(name.getText(),
-                (String) power.getText(),
-                (String) cb_universe.getSelectedItem(),
-                (Integer) debilidad.getValue(),
-                (Integer) fuerza.getValue(),
-                (Integer) agilidadf.getValue(),
-                (Integer) agilidadm.getValue(),
-                (Integer) vida.getValue()));
+                    (String) power.getText(),
+                    (String) cb_universe.getSelectedItem(),
+                    (Integer) debilidad.getValue(),
+                    (Integer) fuerza.getValue(),
+                    (Integer) agilidadf.getValue(),
+                    (Integer) agilidadm.getValue(),
+                    (Integer) vida.getValue()));
 
-        fuerza.setValue(0);
-        DefaultMutableTreeNode n4 = new DefaultMutableTreeNode("MG");
-    }
-
+            fuerza.setValue(0);
+            DefaultMutableTreeNode n4 = new DefaultMutableTreeNode("MG");
+        }
 
      }//GEN-LAST:event_addBotMouseClicked
 
-public static void main(String args[]) {
+    private void addBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBotActionPerformed
+        name.setText("");
+        power.setText("");
+        debilidad.setValue(0);
+        fuerza.setValue(0);
+        agilidadf.setValue(0);
+        agilidadm.setValue(0);
+        vida.setValue(0);
+
+
+    }//GEN-LAST:event_addBotActionPerformed
+
+    public static void main(String args[]) {
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -397,27 +414,23 @@ public static void main(String args[]) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class  
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
