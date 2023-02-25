@@ -85,6 +85,7 @@ public class Personajes {
     public void setVida(int vida) {
         this.vida = vida;
     }
+    
 
     @Override
     public String toString() {
