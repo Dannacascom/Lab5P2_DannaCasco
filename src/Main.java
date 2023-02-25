@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import java.lang.Integer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -313,9 +314,34 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_fuerzaActionPerformed
 
     private void addBotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBotMouseClicked
-        DefaultListModel modelo
-                = (DefaultListModel) jTree1.getModel();
+  
         String s = (String) cb_universe.getSelectedItem();
+        
+        if(s.equals("CD")){
+            DefaultListModel modelo
+                = (DefaultListModel) jTree1.getModel();
+
+        modelo.addElement(new Personajes(name.getText(),
+                (String) power.getText(),
+                (String) cb_universe.getSelectedItem(),
+                (String) Debilidad.getText(),
+                (String) power.getText(),
+                (String) Agilidadf.getText(),
+                (String) Agilidadm.getText(),
+                (String) life.getText()));
+        
+      
+        jl_personas.setModel(modelo);
+        tf_nombre.setText("");
+        sp_edad.setValue(20);
+        cb_nacionalidad.setSelectedIndex(0);
+        }else if(s.equals("Marvel")){
+            
+        }else if(s.equals("Capcom")){
+            
+        }else{
+            
+        }
 
        
                 
