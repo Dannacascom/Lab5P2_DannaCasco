@@ -411,7 +411,7 @@
                 <Component class="javax.swing.JTree" name="jTree1">
                   <Properties>
                     <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                      <TreeModel code="ROOT&#xa; DC&#xa; MARVEL&#xa; CAPCOM&#xa; MG"/>
+                      <TreeModel code=""/>
                     </Property>
                   </Properties>
                 </Component>

@@ -17,11 +17,13 @@ import javax.swing.tree.DefaultTreeModel;
  * @author Danna Casco
  */
 public class Main extends javax.swing.JFrame {
-
+    
+    private DefaultTreeModel modelo;
+    private DefaultMutableTreeNode nodo;
     private ArrayList<Personajes> dc = new ArrayList();
-    ArrayList<Personajes> Marvel = new ArrayList();
-    ArrayList<Personajes> capcom = new ArrayList();
-    ArrayList<Personajes> MG = new ArrayList();
+    private ArrayList<Personajes> Marvel = new ArrayList();
+    private  ArrayList<Personajes> capcom = new ArrayList();
+    private  ArrayList<Personajes> MG = new ArrayList();
 
     public Main() {
 
@@ -247,15 +249,7 @@ public class Main extends javax.swing.JFrame {
         listarTxt.setForeground(new java.awt.Color(255, 255, 255));
         listarTxt.setText("LISTAR");
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("ROOT");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("DC");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("MARVEL");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("CAPCOM");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("MG");
-        treeNode1.add(treeNode2);
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         JT_universos.setViewportView(jTree1);
 
@@ -328,10 +322,8 @@ public class Main extends javax.swing.JFrame {
         String s = (String) cb_universe.getSelectedItem();
         if( name.getText().equals("")||power.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Se encuentran espacios sin llenar ");
-        }
-        
-
-        if (s.equals("CD")) {
+        }else{
+           if (s.equals("CD")) {
 
             dc.add(new Personajes(name.getText(),
                     (String) power.getText(),
@@ -341,11 +333,8 @@ public class Main extends javax.swing.JFrame {
                     (Integer) agilidadf.getValue(),
                     (Integer) agilidadm.getValue(),
                     (Integer) vida.getValue()));
-
-            DefaultMutableTreeNode nodo = new DefaultMutableTreeNode("DC");
-            nodo.add(dc.get(0).getNombre());
-            ((DefaultTreeModel) jTree1.getModel()).reload(rootNode);
-                    JOptionPane.showMessageDialog(this, "Agregado exitosamente");
+            
+            
 
         } else if (s.equals(
                 "Marvel")) {
@@ -362,7 +351,7 @@ public class Main extends javax.swing.JFrame {
 
             DefaultMutableTreeNode n2 = new DefaultMutableTreeNode("Marvel");
              JOptionPane.showMessageDialog(this, "Agregado exitosamente");
-
+             
 
         } else if (s.equals(
                 "Capcom")) {
@@ -391,19 +380,44 @@ public class Main extends javax.swing.JFrame {
             fuerza.setValue(0);
             DefaultMutableTreeNode n4 = new DefaultMutableTreeNode("MG");
         }
-
+ 
+        }
+        
      }//GEN-LAST:event_addBotMouseClicked
 
     private void addBotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBotActionPerformed
-        name.setText("");
-        power.setText("");
-        debilidad.setValue(0);
-        fuerza.setValue(0);
-        agilidadf.setValue(0);
-        agilidadm.setValue(0);
-        vida.setValue(0);
+    modelo =new DefaultTreeModel( new DefaultMutableTreeNode(name.getText()));
+            jTree1.setModel(modelo);
+                    String s = (String) cb_universe.getSelectedItem();
+                    DefaultMutableTreeNode Universos = new DefaultMutableTreeNode("DC");
+                    modelo.insertNodeInto(Universos,null, Universos.getChildCount());
+                    String nod = this.name.getText();
+                    DefaultMutableTreeNode DC = new DefaultMutableTreeNode("DC");
+                    modelo.insertNodeInto(DC,Universos, DC.getChildCount());
+                    DefaultMutableTreeNode Marvel = new DefaultMutableTreeNode("Marvel");
+                                   modelo.insertNodeInto(Marvel,Universos, Marvel.getChildCount());
+
+                    DefaultMutableTreeNode Capcom = new DefaultMutableTreeNode("Capcom");
+                                   modelo.insertNodeInto(Capcom,Universos , Capcom.getChildCount());
+
+                   DefaultMutableTreeNode Mg = new DefaultMutableTreeNode("MG");
+                                   modelo.insertNodeInto(Mg,Universos, Mg.getChildCount());
 
 
+
+
+            if(s.equals("DC")){
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode(nod);
+                modelo.insertNodeInto(n,DC , DC.getChildCount());
+            }
+             JOptionPane.showMessageDialog(this, "Agregado exitosamente");     
+             name.setText("");
+             power.setText("");
+             debilidad.setValue(0);
+             fuerza.setValue(0);
+             agilidadf.setValue(0);
+             agilidadm.setValue(0);
+             vida.setValue(0);
     }//GEN-LAST:event_addBotActionPerformed
 
     public static void main(String args[]) {
